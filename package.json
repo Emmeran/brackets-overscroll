@@ -1,0 +1,22 @@
+{
+    "name": "brackets-overscroll",
+    "title": "Overscroll",
+    "version": "1.0",
+    "description": "Allow the user to scroll below the document.",
+    "homepage": "https://github.com/Emmeran/brackets-overscroll",
+    "author": "Emmeran (https://github.com/Emmeran)",
+    "categories":"editing",
+    "keywords": [
+        "scroll",
+        "overscroll",
+        "below",
+        "document"
+    ],
+    "files": [
+        "main.js",
+        "README.md"
+    ],
+    "engines": {
+        "brackets": ">=0.43.0"
+    }
+}
