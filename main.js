@@ -8,6 +8,6 @@ define(function (require, exports, module) {
     
     // Initialize extension
     AppInit.appReady(function () {
-	    $("<style>.CodeMirror-sizer { margin-bottom: 1000px }</style>").appendTo("head");
+	    $("<style>.CodeMirror-sizer { margin-bottom: 1000px !important }</style>").appendTo("head");
     });
 });
