@@ -13,6 +13,11 @@ define(function (require, exports, module) {
 		return parseFloat(window.getComputedStyle(measure).lineHeight);
 	}
 	
+	function getPaneHeaderHeight(pane){
+		var header = pane.parentNode.parentNode.parentNode.parentNode.parentNode.querySelector('.pane-header');
+		return header.offsetHeight;
+	}
+	
 	/*
 	function getScrollAmount(pane){
 		return parseFloat(pane.style.top);
@@ -33,18 +38,15 @@ define(function (require, exports, module) {
 	
 	WorkspaceManager.on('workspaceUpdateLayout', function(event, newHeight){
 		getAllPanes().forEach(function(pane){
-			var lineHeight = getLineHeight(pane);
 			// var currentScroll = getScrollAmount(pane);
 			// var currentOffset = getOffset(pane);
-			var newOffset = (newHeight - lineHeight * 2);
+			var newOffset = newHeight - getLineHeight(pane) * 2 - getPaneHeaderHeight(pane);
 			
 			setOffset(pane, newOffset);
 			
-			// BUG: if we go from smaller screen to larger, then the editor 
-			// seemingly cannot remember the scroll position
-			// for example: we scrolled down as far as we can, top line on page
-			// is 132, if we upscale the window it will change to ~104
-			// the below line didn't work, I'm leaving it here for reference
+			// BUG: we have some issues with calculating top
+			// the pane isn't the only one, which has a top, plus brackets
+			// messes around with the height
 			// setScrollAmount(pane, currentScroll - currentOffset + newOffset);
 		});
 	});
